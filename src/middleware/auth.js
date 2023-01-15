@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken');
 const studentModel = require('../models/studentModel.js');
-const { isValidObjectId } = require('../util/validator.js');
 
 //authorization
 const authentication = async (req, res, next) => {
@@ -26,7 +25,6 @@ const authorization = async (req, res, next) => {
     try {
         const studentId = req.params.studentId;
         if (!studentId) return res.status(400).send({ status: false, message: `studentId is required.` });
-        if (!isValidObjectId(studentId)) return res.status(400).send({ status: false, message: ` '${studentId}' this studentId invalid.` });
 
         const existUser = await studentModel.findById(studentId);
         if (!existUser) return res.status(404).send({ status: false, message: `student not found by '${studentId}' this studentId.` });
