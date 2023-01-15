@@ -1,9 +1,11 @@
 const { Router } = require('express');
 const express = require('express');
 const mongoose = require('mongoose');
+const multer = require('multer')
 
 const app = express();
 app.use(express.json());
+app.use(multer().any());
 mongoose.set('strictQuery', false);
 
 mongoose.connect('mongodb+srv://aparna21:tpzmDVkZSc3mpMTf@cluster21.u69lmjr.mongodb.net/group34Database', {

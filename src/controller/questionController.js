@@ -27,6 +27,7 @@ exports.updateQuestion = async function(req,res){
     try {
         const data = req.body.params
         const saveData = await questionModel.findById(data);
+        //const update = 
         return res.status(200).send({status:true, Message:"Question updated succesfully", Data:saveData})
     } catch (error) {
         return res.status(500).send({status:false,Message:error.Message})
